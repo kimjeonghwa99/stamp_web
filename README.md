@@ -2,13 +2,13 @@
 ## 📱 UI 미리보기
 
 ### 유저 – 스탬프 적립
-![user-stamp](./docs/ui-user-stamp.png)
+![user-stamp](https://github.com/kimjeonghwa99/stamp_web/blob/main/src/docs/ui-user-stamp.png)
 
 ### 관리자 – 가맹점 관리
-![admin-store](./docs/ui-admin-store.png)
+![admin-store](https://github.com/kimjeonghwa99/stamp_web/blob/main/src/docs/ui-admin-store.png)
 
 ### 직원 – 쿠폰 검증
-![staff-coupon](./docs/ui-staff-coupon.png)
+![staff-coupon](https://github.com/kimjeonghwa99/stamp_web/blob/main/src/docs/ui-staff-coupon.png)
 
 
 # QR 스탬프 투어 프로젝트 개요

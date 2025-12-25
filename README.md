@@ -1,73 +1,61 @@
-# React + TypeScript + Vite
+# QR 스탬프 투어 프로젝트 개요
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 1. 프로젝트 배경
+지역 관광지·카페·맛집을 연계한  
+**오프라인 방문 유도형 이벤트**를 웹으로 구현하고자 시작한 프로젝트이다.
 
-Currently, two official plugins are available:
+백엔드/DB 없이도 동작 가능한 구조를 목표로 하여  
+프론트엔드 중심 설계 역량을 보여주는 포트폴리오용 프로젝트로 제작했다.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 2. 문제 정의
+- 단순 QR 이벤트는 복제·공유가 쉬움
+- 서버 없이 쿠폰 검증 로직 구현이 어려움
+- 관리자 / 유저 / 직원 역할 분리가 필요
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 3. 해결 방식
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 역할 분리
+| 역할 | 기능 |
+|----|----|
+| 관리자 | 이벤트/가맹점 등록 |
+| 유저 | 스탬프 적립, 쿠폰 획득 |
+| 직원 | 매장 인증 후 쿠폰 사용 처리 |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### QR 흐름
+1. 유저 → 매장 QR 스캔 → 스탬프 적립
+2. 목표 달성 → 쿠폰 QR 생성
+3. 직원 → 매장 QR 스캔
+4. 직원 → 쿠폰 QR 스캔 → 사용 처리
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 4. 기술적 특징
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- LocalStorage 기반 상태 관리
+- QR 코드 문자열 기반 검증 로직
+- React Hook을 활용한 상태 파생(useMemo, useEffect)
+- 모바일 환경 최적화 UI
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 5. 확장 가능성
+
+- 서버 연동 시:
+  - 로그인/회원 관리
+  - 쿠폰 서버 검증
+  - 통계 대시보드
+- 지도 API 연동:
+  - 관광지 위치 표시
+  - 주변 가맹점 추천
+
+---
+
+## 6. 포트폴리오 포인트
+
+- 단순 CRUD가 아닌 **실제 서비스 흐름 설계**
+- DB 제약 상황에서의 대안적 설계
+- QR 기반 오프라인-온라인 연결 경험

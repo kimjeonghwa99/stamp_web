@@ -1,6 +1,6 @@
-import "./Home.css";
+import "./Main.css";
 
-export default function Home() {
+export default function Main() {
   return (
     <div className="page">
       <div className="panel">

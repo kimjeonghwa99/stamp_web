@@ -5,6 +5,7 @@ import NewPlace from "./pages/NewPlace"
 import PlaceDetail from "./pages/PlaceDetail"
 import Book from "./pages/Book"
 
+
 export const router = createBrowserRouter([
   {
     element: <Layout />,
